@@ -36,4 +36,21 @@ class Productos extends CI_Controller {
     public function insertar_categoria() {
         $this->load->view('Productos/insertar_categoria_view');
     }
+
+    public function eliminarCategoria() {
+        $id = $this->uri->segment(2);
+        $this->Mimodelo->lessCategoria($id);
+        redirect(base_url('index.php/Productos/listaCategorias'));
+    }
+ 
+    public function actualizaCategoria() {
+        $id = $this->uri->segment(2);
+        $categorias = $this->Mimodelo->getCategorias($id);
+        $categoria = ($categorias!=false) ? $categorias->rows(0) : false;
+        $data = array(
+            'categoria' => $categoria,
+        );
+        $this->load->view('Productos/actualizar_categoria_view', $data);
+    }
+
 }

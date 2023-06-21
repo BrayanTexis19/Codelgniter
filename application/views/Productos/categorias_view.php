@@ -8,7 +8,7 @@
 <body>
     <h2>Categorias</h2>
 
-    <table>
+    <table border="1">
         <thead>
             <tr>
               <th>No.</th>
@@ -25,7 +25,11 @@
                     <tr>
                          <td> <?= ++$contador?></td>
                          <td> <?= $categoria->nombre?></td>
-                         <td> <?= $categoria->activo?></td>
+                         <td> <?= ($categoria->activo==1)? 'Activo':'Inactivo' ?></td>
+                         <td>
+                            <a href="<?= base_url('index.php/eliminar_categoria/' . $categoria->id_categorias) ?>">Actualizar</a>
+                            <a href="<?= base_url('index.php/eliminar_categoria/' . $categoria->id_categorias) ?>">Eliminar</a>
+                         </td>
                     </tr>
                     <?php
                  }
